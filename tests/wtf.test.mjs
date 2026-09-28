@@ -29,5 +29,9 @@ test('posts to /api/v1/chat/completions with Bearer + model', async () => {
 
 test('throws when missing api key', async () => {
   delete process.env.WTF_SEARCH_API_KEY;
+  process.env.WTF_SEARCH_CONFIG = '/nonexistent-wtf-search.json';
+  // point agent dir away from real ~/.pi/agent/wtf-search.json
+  process.env.PI_CODING_AGENT_DIR = '/tmp';
   await assert.rejects(() => callWtfSearch(ctx, 'q'), /Missing WTF_SEARCH_API_KEY/);
+  delete process.env.WTF_SEARCH_CONFIG;
 });
