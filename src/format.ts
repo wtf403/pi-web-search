@@ -1,7 +1,10 @@
 import type { AgentToolResult } from "@earendil-works/pi-coding-agent";
 import { truncateHead, DEFAULT_MAX_BYTES, DEFAULT_MAX_LINES } from "@earendil-works/pi-coding-agent";
-import { applyCitations } from "./providers/google.ts";
 import type { SearchResultDetail, Source, StreamResult } from "./providers/types.ts";
+
+function applyCitations(text: string, _meta: any): { text: string; sources: Source[] } {
+    return { text, sources: [] };
+}
 
 const ADDITIONAL_RESULTS_LIMIT = 8;
 
